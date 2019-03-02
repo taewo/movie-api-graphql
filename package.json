@@ -1,0 +1,10 @@
+{
+  "name": "movie-api-graphql",
+  "version": "1.0.0",
+  "description": "Movie api with graphQL",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "graphql-yoga": "^1.17.4"
+  }
+}
