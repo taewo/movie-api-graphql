@@ -1,28 +1,25 @@
-export const people = [
-    {
-        id: "0",
-        name: 'NiCol',
-        age: 18,
-        gender: 'female',
-    }, {
-        id: "1",
-        name: 'aaaa',
-        age: 111,
-        gender: '1111',
-    }, {
-        id: "2",
-        name: 'bbbbb',
-        age: 222,
-        gender: '2222',
-    }, {
-        id: "3",
-        name: 'cccc',
-        age: 333,
-        gender: '3333',
-    }
-]
+import fetch from 'node-fetch';
+const API_URL = "https://yts.am/api/v2/list_movies.json?";
 
-export const getById = id => {
-    const filteredPeople = people.filter(person => String(id) === person.id);
-    return filteredPeople[0];
+export const getMovies = (limit, rating) => {
+  let REQUEST_URL = API_URL;
+  if (limit > 0) {
+    REQUEST_URL += `limit=${limit}`
+  }
+  if (rating > 0) {
+    REQUEST_URL += `&minimum_rating=${rating}`
+  }
+  return fetch(REQUEST_URL)
+    .then(res => res.json())
+    .then(json => {
+      return json.data.movies
+    })
+}
+
+export const test_func = (params) => {
+  return fetch(API_URL)
+    .then(res => res.json())
+    .then(json => {
+      return "hello world"
+    })
 }
